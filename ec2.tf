@@ -1,15 +1,15 @@
 resource "aws_instance" "terraform" {
-    ami = "ami-09c813fb71547fc4f"
+    ami = "ami-0685bcc683dadb6b9"
     instance_type = "t3.micro"
     vpc_security_group_ids = [aws_security_group.allow_all.id]
     tags = {
-        Name = "terraform-1"
+        Name = "terraform-new"
         Terraform = "true"
     }
 }
 
 resource "aws_security_group" "allow_all" {
-  name   = "allow-all"
+  name   = "allow-everyone"
 
   egress {
     from_port        = 0 # from port 0 to to port 0 means all ports
@@ -26,7 +26,7 @@ resource "aws_security_group" "allow_all" {
   }
 
   tags = {
-    Name = "allow-all"
+    Name = "allow-traffic"
   }
 
 }
